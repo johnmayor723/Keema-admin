@@ -5,7 +5,7 @@ const axios = require('axios');
 // Get all products
 
 router.get('/', (req, res) => {
-  axios.get('https://api.foodliie.com/api/products')
+  axios.get('https://keema.com.ng/api/products')
     .then(response => {
       const products = response.data
       console.log(products)
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 // Get single product by ID
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  axios.get(`https://api.foodliie.com/api/products/${id}`)
+  axios.get(`https://keema.com.ng/api/products/${id}`)
     .then(response => {
       res.render('product', { product: response.data });
     })
@@ -37,7 +37,7 @@ router.post('/create', (req, res) => {
   const { name, category, price, description, imageUrl, stock, measurements } = req.body;
 
 const parsedMeasurements = measurements || [];
-  axios.post('https://api.foodliie.com/api/products', {
+  axios.post('https://keema.com.ng/api/products', {
       name,
       category,
       price,
@@ -62,7 +62,7 @@ router.put('/edit/:id', (req, res) => {
 
   const parsedMeasurements = measurements || [];
 
-  axios.put(`https://api.foodliie.com/api/products/${id}`, {
+  axios.put(`https://keema.com.ng/api/products/${id}`, {
       name,
       category,
       price,
@@ -84,7 +84,7 @@ router.delete('/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
-    const response = await axios.delete(`https://api.foodliie.com/api/products/${id}`);
+    const response = await axios.delete(`https://keema.com.ng/api/products/${id}`);
     
     console.log('Delete response:', response.status, response.data);
 

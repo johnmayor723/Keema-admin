@@ -4,7 +4,7 @@ const axios = require('axios');
 
 // Get all orders
 router.get('/', (req, res) => {
-  axios.get('https://api.foodliie.com/api/orders')
+  axios.get('https://keema.com.ng/api/orders')
     .then(response => {
       res.render('orders', { orders: response.data });
     })
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 // Get single order by ID
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  axios.get(`https://api.foodliie.com/api/orders/orders/${id}`)
+  axios.get(`https://keema.com.ng/api/orders/orders/${id}`)
     .then(response => {
       res.render('order', { order: response.data });
     })
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 // Create a new order
 router.post('/create', (req, res) => {
   const { customerName, items, total, status } = req.body;
-  axios.post('http://api.fooddeckpro.com.ng/api/orders', { customerName, items, total, status })
+  axios.post('https://keema.com.ng/api/orders', { customerName, items, total, status })
     .then(response => {
       res.redirect('/orders');
     })
@@ -45,7 +45,7 @@ router.post('/create', (req, res) => {
 router.post('/edit/:id', (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
-  axios.post(`https://api.foodliie.com/api/orders/${id}`, { status })
+  axios.post(`https://keema.com.ng/api/orders/${id}`, { status })
     .then(response => {
       res.redirect(`/orders/${id}`);
     })
@@ -58,7 +58,7 @@ router.post('/edit/:id', (req, res) => {
 // Delete an order
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  axios.delete(`http://api.foodliie.com/api/orders/${id}`)
+  axios.delete(`https://keema.com.ng/api/orders/${id}`)
     .then(response => {
       res.redirect('/orders');
     })
@@ -72,7 +72,7 @@ router.delete('/', async (req, res) => {
   const { orderId } = req.body;
 
   try {
-    const response = await axios.delete('https://api.foodliie.com/api/orders', {
+    const response = await axios.delete('https://keema.com.ng/api/orders', {
       data: { orderId },
     });
 
@@ -96,7 +96,7 @@ router.post('/update-agent-sales', async (req, res) => {
   }
 
   try {
-    const response = await axios.patch("https://api.foodliie.com/api/agent", {
+    const response = await axios.patch("https://keema.com.ng/api/agent", {
       code:couponCode,
       amount,
     });

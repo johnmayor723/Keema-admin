@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const API_BASE_URL = 'https://api.foodliie.com'; // Change to your actual API base URL
+const API_BASE_URL = 'https://keema.com.ng'; // Change to your actual API base URL
 
 // GET /users - List all users
 router.get('/', async (req, res) => {
